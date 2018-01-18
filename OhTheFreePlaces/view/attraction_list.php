@@ -1,8 +1,8 @@
-<?php include '../common/header.php'; ?>
+<?php include 'header.php'; ?>
 <body>
     <div class="menu">
         <h2></h2>
-        <?php include '../common/nav.php'; ?>
+        <?php include 'nav.php'; ?>
 
     <div class="leftSidebar">
         <h2></h2>
@@ -33,4 +33,4 @@
 		</table>
       
     </div>
-    <?php include '../common/footer.php'; ?>
+    <?php include 'footer.php'; ?>

@@ -1,0 +1,11 @@
+@media screen and (max-width: 450px) {
+  .header,
+  .body,
+  .column1of2,
+  .column2of2,
+  .footer {
+    float: none;
+    width: auto;
+  }
+}
+

@@ -1,4 +1,4 @@
-<?php include '../common/header.php'; ?>
+<?php include 'header.php'; ?>
 <!--<head><meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -6,7 +6,7 @@
 <body>
     <div class="menu">
         <h2></h2>
-        <?php include '../common/nav.php'; ?>
+        <?php include 'nav.php'; ?>
     </div>
     <div class="leftSidebar">
         <h2></h2>
@@ -48,4 +48,4 @@
         console.log("ID Token: " + id_token);
       };
     </script> -->
-    <?php include '../common/footer.php'; ?>
+    <?php include 'footer.php'; ?>

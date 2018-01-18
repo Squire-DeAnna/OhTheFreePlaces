@@ -1,4 +1,4 @@
-<?php include '../view/header.php'; ?>
+<?php include '../common/header.php'; ?>
 <body>
     <div class="menu">
         <h2></h2>
@@ -14,4 +14,4 @@
         Body text here
 
     </div>
-    <?php include '../view/footer.php'; ?>
+    <?php include '../common/footer.php'; ?>
