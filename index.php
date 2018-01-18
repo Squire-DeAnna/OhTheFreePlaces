@@ -1,5 +1,5 @@
 <?php
-require('library/database.php');
+//require('library/database.php');
 require('model/category_db.php');
 require('model/city_db.php');
 require('model/review_db.php');
@@ -16,7 +16,7 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL) {
-        $action = 'home';
+        $action = 'template';
     }
 }
 

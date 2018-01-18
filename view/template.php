@@ -1,17 +1,10 @@
-<?php include '../view/header.php'; ?>
-<body>
-    <div class="menu">
-     <h2></h2>
-        <?php include 'nav.php'; ?>
-    </div>
-   <div class="leftSidebar">
-     <h2>This is a template</h2>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/header.php'; ?>
+
+        <h1 class='content-title'>Content Title Here</h1>
+        <p>Making vacationing a little easier and cheaper for individuals and families.</p>
+
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-pinterest"></a>
         
-    </div>
-        
-    <div class="body"> 
-        <h2>Header here</h2>
-        Body text here
-        
-    </div>
-<?php include '../view/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/common/footer.php'; ?>

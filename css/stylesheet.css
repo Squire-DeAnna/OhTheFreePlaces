@@ -1,0 +1,209 @@
+@font-face {
+    font-family: 'built_titlinglight';
+    src: url('/templates/css/fonts/built_titling_lt-webfont.woff2') format('woff2'),
+         url('/templates/css/fonts/built_titling_lt-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+html,
+
+html {
+    background-color:  #364652;
+}
+
+main {
+    padding-top: 20px;
+    margin:  0 auto;
+    width: 100%;
+    max-width: 1200px; 
+    background-color: #FAFCF9;
+    text-align: center;
+}
+
+p, h1 {
+    color: #364652;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-family: 'built_titlinglight';
+    font-weight: lighter;
+}
+
+.heading {
+    margin:  0 auto;
+    width: 100%;
+    max-width: 1200px; 
+}
+footer p{
+    text-align: right;
+    color: white;
+}
+header {
+    position:relative;
+    display:block;
+    max-width:100%;
+    height:100%;
+    margin:0 auto;
+    padding:1rem 0rem;
+    background: #91CAE0;
+}
+header h1 {
+    line-height: 45px;
+    font-size: 55px;
+    margin: 0;
+    display:inline;
+    padding-left: 25px;
+}
+nav {
+    float: right;
+    padding-bottom: 0px;
+    padding-right: 10px;
+}
+nav ul{
+    list-style-type: none;
+    text-align: right;
+    margin: 0 auto;
+    font-family: 'built_titlinglight';
+    
+}
+nav li {
+    font-size: 45px;
+    display: inline;
+    padding:  7px;
+    font-weight: bold;
+}
+
+nav a{
+    color:  #364652;
+    font-weight: lighter;
+    text-decoration: none;
+}
+nav a:hover {
+    color:  #fff;
+}
+a:hover{
+    cursor: pointer;
+}
+/* Mobile Drop Down Nav Bar */
+.dropbtn {
+    font-family: 'built_titlinglight';
+    color: #364652;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.dropdown {
+    text-align: left;
+    position: relative;
+    display: none;
+    
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    font-family: 'built_titlinglight';
+    min-width: 110px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    
+
+}
+
+.dropdown-content a {
+    font-size: 30px;
+    color: #364652;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #364652;  
+    color: white;                            
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    color: white;
+}
+
+.content-title {
+    font-size: 90px;
+    margin-bottom: 10px;
+}
+
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #822432;
+  color: white;
+}
+
+.fa-twitter {
+  background: #822432;
+  color: white;
+}
+
+
+.fa-pinterest {
+  background: #822432;
+  color: white;
+}
+
+/* @Media for Mobile Displays */
+@media screen and (min-width: 320px) {
+    nav ul {display: none;}
+    .dropdown { display: block; }
+}
+/* For big display cell phones */
+@media screen and (min-width: 430px) {
+    header {
+        padding:1rem 2rem;
+    }
+    .dropdown-content a {
+        font-size: 40px;
+    }
+}
+
+@media screen and (min-width: 599px) {
+
+    
+}
+/* For tablets: */
+@media screen and (min-width: 640px) {
+   nav ul     { display: inline; }
+    .dropdown { display: none; }
+}
+
+/* For desktop: */
+@media screen and (min-width: 800px) {
+
+}
+
+@media screen and (min-width: 900px) {
+ 
+}
+

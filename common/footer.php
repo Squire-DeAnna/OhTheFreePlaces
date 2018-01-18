@@ -1,7 +1,7 @@
+</main>
 <footer>
-    <p class="copyright">
-        &copy; <?php echo date("Y"); ?> Oh the Free Places You'll Go!
-    </p>
+    <p>&copy; 2018 OH THE FREE PLACES YOU'LL GO</p>
 </footer>
 </body>
+
 </html>
