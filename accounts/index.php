@@ -6,11 +6,16 @@
 
 //start session
 session_start();
-//require_once '../library/database.php';
+
+//database connection file
+require_once '../library/database.php';
+//Functions File
+require_once '../library/functions.php';
+// Accounts / User Model
 require_once '../model/user_db.php';
 
 //get UserDB class
-$userDB = new UserDB();
+//$userDB = new UserDB();
 
 //error message variable
 $error = '';
@@ -23,44 +28,117 @@ if ($action == NULL) {
 
 
 switch ($action) {
+    //Login Page View
     case 'login':
         include '../view/login.php';
         break;
+    //User Logs in Action
     case 'user_login':
-        $email_input = filter_input(INPUT_POST, 'email_input');
-        $password_input = filter_input(INPUT_POST, 'password_input');
-        $users = $userDB->get_user();
-        $error ='';
-            if ($email_input == NULL || $password_input == NULL ||$email_input != $users->getUserEmail() && $password_input != $users->getPassword()) {
-            include('../view/login.php');
-        $error = "Invalid username and password!";
-        } 
-            else  {
-            include('../view/profile.php');
-        }  
+        $userEmail = filter_input(INPUT_POST, 'userEmail', FILTER_SANITIZE_EMAIL);
+        $emailCheck = checkEmail($userEmail);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+        $passwordCheck = checkPassword($password);
+
+        // Run basic checks, return if errors
+        if (empty($emailCheck) || empty($passwordCheck)) {
+          $message = '<p class="notice">Please provide a valid email address and password.</p>';
+          include '../view/login.php';
+          exit;
+        }
+
+        // A valid password exists, proceed with the login process
+        // Query the client data based on the email address
+        $userData = getUser($userEmail);
+        // Compare the password just submitted against
+        // the hashed password for the matching client
+        $hashCheck = password_verify($password, $userData['password']);
+        // If the hashes don't match create an error
+        // and return to the login view
+        if (!$hashCheck) {
+          $message = '<p class="notice">Please check your password and/or email and try again.</p>';
+          include '../view/login.php';
+          exit;
+        }
+        // A valid user exists, log them in
+        $_SESSION['loggedin'] = TRUE;
+        // Remove the password from the array
+        // the array_pop function removes the last
+        // element from an array
+        array_pop($userData);
+        // Store the array into the session
+        $_SESSION['userData'] = $userData;
+
+        // Send them to the profile view
+
+        header('location: ../accounts/index.php?action=profile');
+        
+        exit;
         break;
+    //Sign Up Page View    
     case 'sign_up_form':
         include('../view/sign_up.php');
         break;
+    //Create New User Action
     case 'create_login':
-        $email_input = filter_input(INPUT_POST, 'email_input');
-        $first_name_input = filter_input(INPUT_POST, 'first_name_input');
-        $last_name_input = filter_input(INPUT_POST, 'last_name_input');
-        $password_input = filter_input(INPUT_POST, 'password_input');
-        $verify_password = filter_input(INPUT_POST, 'verify_password');
-        $users = get_user();
-            if ($email_input == $users['userEmail']){    
-            $error = "This email is already in use. Please either login with this email or sign up with a new one";
-            } else if ($password_input != $verify_password || $verify_password != $password_input){
-            $error = "The passwords you entered do not match.";
+        // Filter and store the data
+        $userFirstName = filter_input(INPUT_POST, 'userFirstName', FILTER_SANITIZE_STRING);
+        $userLastName = filter_input(INPUT_POST, 'userLastName', FILTER_SANITIZE_STRING);
+        $userEmail = filter_input(INPUT_POST, 'userEmail', FILTER_SANITIZE_EMAIL);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+        $userConfirm = filter_input(INPUT_POST, 'userConfirm', FILTER_SANITIZE_STRING);
+        
+        $checkEmail = checkEmail($userEmail);
+        $checkPassword = checkPassword($password);
+        
+        $existingEmail = checkExistingEmail($userEmail);
+        
+        if ($existingEmail){
+            $message = '<p>The email address provided already exists. Please login with your existing email and password. </p>';
+            include '../view/login.php';
+            exit;
+        }
+        
+        // Check for missing data
+        if(empty($userFirstName) || empty($userLastName) || empty($userEmail) || empty($password) || empty($userConfirm)){
+            $message = '<p>Please provide information for all empty form fields.</p>';
+            include '../view/sign_up.php';
+            exit;   
+        }
+        
+        if($password != $userConfirm){
+            $message = '<p>Both password fields must match.</p>';
+            include '../view/sign_up.php';
+            exit;   
+        }
+        
+        //Hash the checked password
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        
+        // Send the data to the model
+        $regOutcome = regUser($userFirstName, $userLastName, $userEmail, $hashedPassword);
+        
+        // Check and report the result
+        if($regOutcome === 1){
+         $message = "<p>Thank you for registering $userFirstName. Please use your email and password to login.</p>";
+         include '../view/login.php';
+         exit;
         } else {
-        add_user($email_input, $password_input, $first_name_input, $last_name_input);
-        $error = "User creation succesful! Please login with your username and password.";
-        include('../view/login.php');
+         $message = "<p>Sorry $userFirstName, but the registration failed. Please try again.</p>";
+         include '../view/sign_up.php';
+         exit;
         }
         break;
+        
+        //View User Profile Page
     case 'profile':
         include('../view/profile.php');
+        break;
+    
+    case 'logout':
+            $_SESSION['loggedin'] = FALSE;
+            session_destroy();
+            header('Location: ../index.php?action=home');
+            
         break;
 
 }

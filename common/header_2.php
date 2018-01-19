@@ -16,7 +16,7 @@
 <body>
 	<header>
             <div class="heading">
-                <a href="../index.php?action=home" style='text-decoration: none;'><h1>OH THE FREE <br>
+                <a href="index.php?action=home" style='text-decoration: none;'><h1>OH THE FREE <br>
                         PLACES YOU'LL GO!</h1></a>
                 
                 <nav>
@@ -27,11 +27,11 @@
                         <li>-</li>
                         <?php
                                 if (isset($_SESSION['loggedin'])){
-                                    echo "<li><a href='../accounts/index.php?action=profile'>Account</a></li>";
+                                    echo "<li><a href='accounts/index.php?action=profile'>Account</a></li>";
                                     echo "<li>-</li>";
-                                    echo "<li><a href='../accounts/index.php?action=logout'>Log Out</a></li>";
+                                    echo "<li><a href='accounts/index.php?action=logout'>Log Out</a></li>";
                                 } else {
-                                    echo "<li><a href='../accounts/index.php?action=login'>Login</a></li>";
+                                    echo "<li><a href='accounts/index.php?action=login'>Login</a></li>";
                                 }
                                ?>
                     </ul>
@@ -43,10 +43,10 @@
                               <a>About Us</a>
                               <?php
                                 if (isset($_SESSION['loggedin'])){
-                                    echo "<a href='../accounts/index.php?action=profile'>Account</a>";
-                                    echo "<a href='../accounts/index.php?action=log_out'>Log Out</a>";
+                                    echo "<a href='accounts/index.php?action=profile'>Account</a>";
+                                    echo "<a href='accounts/index.php?action=log_out'>Log Out</a>";
                                 } else {
-                                    echo "<a href='../accounts/index.php?action=login'>Login</a>";
+                                    echo "<a href='accounts/index.php?action=login'>Login</a>";
                                 }
                                ?>
                           </div>

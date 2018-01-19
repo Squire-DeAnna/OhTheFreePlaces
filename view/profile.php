@@ -1,21 +1,29 @@
+<?php
+    if (isset($_SESSION['loggedin'])){
+        
+    } else {
+        header('Location: ../index.php?action=home');
+    }
+?>
 <?php include '../common/header.php'; ?>
-<body>
-    <div class="menu">
-        <h2></h2>
-        <?php include '../common/nav.php'; ?>
-    </div>
-    <div class="leftSidebar">
-        <h2></h2>
-    </div>
+<h1 class="content-title"><?php 
+                           echo "Welcome, ";
+                           echo $_SESSION['userData']['userFirstname'];
+                           echo " ";
+                           echo $_SESSION['userData']['userLastname'];
+                           ?></h1>
+<p>You are currently logged in.</p>
+<ul id="profile">
+            <li>First Name: <?php 
+                           echo $_SESSION['userData']['userFirstname'];
+                           ?></li>
+            <li>Last Name:  <?php 
+                           echo $_SESSION['userData']['userLastname'];
+                           ?></li>
+            <li>Email:  <?php 
+                           echo $_SESSION['userData']['userEmail'];
+                           ?></li>
+        </ul>
 
-    <div class="body"> 
-        <h2>Welcome <?php echo $users->getUserFirstName(); ?> </h2>
-        <h3>Profile Page</h3>
-       First Name: <?php echo $users->getUserFirstName(); ?>
-        <br>Last Name: <?php echo $users->getUserLastName(); ?>
-        <br>Email: <?php echo $users->getUserEmail(); ?>
-        
-        
-
-    </div>
-    <?php include '../common/footer.php'; ?>
+    
+<?php include '../common/footer.php'; ?>

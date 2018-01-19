@@ -21,22 +21,27 @@ main {
     text-align: center;
 }
 
-p, h1, h2, h3 {
+p {
+    font-family: 'Open Sans', sans-serif;
     color: #364652;
 }
 
-p {
-    font-family: 'Open Sans', sans-serif;
-}
 
-.forms {
+.login-form{
     font-family: 'Open Sans', sans-serif;
     text-align: left;
 }
 
-h1, h2, h3 {
+h1 {
     font-family: 'built_titlinglight';
     font-weight: lighter;
+    color: #364652;
+}
+
+h2 {
+    font-family: 'built_titlinglight';
+    font-weight: lighter;
+    color: #364652;
 }
 
 .heading {
@@ -64,6 +69,7 @@ header h1 {
     display:inline;
     padding-left: 25px;
 }
+
 nav {
     float: right;
     padding-bottom: 0px;
@@ -177,6 +183,7 @@ a:hover{
   background: #822432;
   color: white;
 }
+
 
 /* @Media for Mobile Displays */
 @media screen and (min-width: 320px) {

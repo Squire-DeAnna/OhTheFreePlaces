@@ -1,33 +1,49 @@
 <?php include '../common/header.php'; ?>
-<body>
-    <div class="menu">
-        <h2></h2>
-        <?php include '../common/nav.php'; ?>
-    </div>
-    <div class="leftSidebar">
-        <h2></h2>
-    </div>
-
-    <div class="body"> 
-        <h2>Sign Up</h2>
-        Please enter the fields below to sign up for our website. 
-        <?php echo $error; ?>
-        <form action="." method="post">
-            <label for="email_input">Email:</label><br/>
-            <input type="email" name="email_input" id="email_input"><br/>
-            
-            <label for="first_name_input">First Name:</label><br/>
-            <input type="text" name="first_name_input" id="first_name_input"><br/>
-            <label for="last_name_input">Last Name:</label><br/>
-            <input type="text" name="first_name_input" id="first_name_input"><br/>
-            <label for="password_input">Password:</label><br/>
-            <input type="password" name="password_input" id="password_input"><br/>
-            <label for="verify_password">Verify Password:</label><br/>
-            <input type="password" name="verify_password" id="verify_password"><br/>
-            
+    <h1 class="content-title">Sign Up</h1>
+    <p>Fill in the form below to sign up for our website:</p>
+    <div class="login-form">
+        <?php
+        if (isset($message)) {
+         echo $message;
+        }
+        ?>
+        <form action="../accounts/index.php" method="post">
+            <label for="userFirstName">First Name:</label> <br>
+            <input name="userFirstName" id="userFirstName" type="text"
+            <?php
+            if (isset($userFirstName)) {
+                echo "value='$userFirstName'";
+            }
+            ?> required>
+            <br>
+            <label for="userLastName">Last Name:</label><br>
+            <input name="userLastName" id="userLastName" type="text"
+            <?php
+            if (isset($userLastName)) {
+                echo "value='$userLastName'";
+            }
+            ?> required>
+            <br>
+            <label for="userEmail">Email Address:</label><br>
+            <input name="userEmail" id="userEmail" type="email" required 
+            <?php
+            if (isset($userEmail)) {
+                echo "value='$userEmail'";
+            }
+            ?>>
+            <br>
+            <label for="password">Password:</label>
+            <br><span>(Password must be at least 8 characters long and contain 1 number, 1 capital letter, and 1 special character)</span>
+            <br><input name="password" id="password" type="password" required pattern="(?=^.{8,}$)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+            <br>
+            <label for="userConfirm">Confirm Password:</label><br>
+            <input name="userConfirm" id="userConfirm" type="password" required pattern="(?=^.{8,}$)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+            <br>
+            <br>
+            <input type="submit" name="submit" id="regbtn" value="Register">
+            <!--Add the action kew - value pair-->
             <input type="hidden" name="action" value="create_login">
-            <input type="submit" value="Sign Up"></form>
-
-
+        </form>
     </div>
-    <?php include '../common/footer.php'; ?>
+
+<?php include '../common/footer.php'; ?>
