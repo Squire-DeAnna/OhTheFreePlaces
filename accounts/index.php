@@ -6,7 +6,7 @@
 
 //start session
 session_start();
-require_once '../library/database.php';
+//require_once '../library/database.php';
 require_once '../model/user_db.php';
 
 //get UserDB class
@@ -59,7 +59,7 @@ switch ($action) {
         include('../view/login.php');
         }
         break;
-    case 'user_profile':
+    case 'profile':
         include('../view/profile.php');
         break;
 

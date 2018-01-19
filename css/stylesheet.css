@@ -21,7 +21,7 @@ main {
     text-align: center;
 }
 
-p, h1 {
+p, h1, h2, h3 {
     color: #364652;
 }
 
@@ -29,7 +29,12 @@ p {
     font-family: 'Open Sans', sans-serif;
 }
 
-h1 {
+.forms {
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+}
+
+h1, h2, h3 {
     font-family: 'built_titlinglight';
     font-weight: lighter;
 }
