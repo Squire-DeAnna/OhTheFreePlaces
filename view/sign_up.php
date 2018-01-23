@@ -1,4 +1,4 @@
-<?php include '../common/header.php'; ?>
+    <?php include 'common/header_2.php'; ?>
     <h1 class="content-title">Sign Up</h1>
     <p>Fill in the form below to sign up for our website:</p>
     <div class="login-form">
@@ -46,4 +46,4 @@
         </form>
     </div>
 
-<?php include '../common/footer.php'; ?>
+    <?php include 'common/footer.php'; ?>

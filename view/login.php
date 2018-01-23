@@ -1,4 +1,4 @@
-<?php include '../common/header.php'; ?>
+<?php include 'common/header_2.php'; ?>
 
         <h1 class='content-title'>Login</h1>
         <p>Please login with your email and the password for this website. If you are new, please click on the "Sign Up" button below.</p>
@@ -29,4 +29,4 @@
         <a href="../accounts/index.php?action=sign_up_form"><button>Sign Up</button></a><br><br>
 
     
-<?php include '../common/footer.php'; ?>
+    <?php include 'common/footer.php'; ?>

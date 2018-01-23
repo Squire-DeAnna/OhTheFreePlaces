@@ -5,7 +5,7 @@
         header('Location: ../index.php?action=home');
     }
 ?>
-<?php include '../common/header.php'; ?>
+    <?php include 'common/header_2.php'; ?>
 <h1 class="content-title"><?php 
                            echo "Welcome, ";
                            echo $_SESSION['userData']['userFirstname'];
@@ -27,4 +27,4 @@
             </ul>
         </div>
     
-<?php include '../common/footer.php'; ?>
+    <?php include 'common/footer.php'; ?>
