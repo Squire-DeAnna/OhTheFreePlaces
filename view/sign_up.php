@@ -1,12 +1,15 @@
-    <?php include 'common/header_2.php'; ?>
+<?php include '../common/header.php'; ?>
     <h1 class="content-title">Sign Up</h1>
     <p>Fill in the form below to sign up for our website:</p>
     <div class="login-form">
-        <?php
-        if (isset($message)) {
-         echo $message;
-        }
-        ?>
+        <div class="error-message">
+            <?php
+            if (isset($message)) {
+             echo $message;
+            }
+            ?>
+        </div>
+        <div class="form-align">
         <form action="../accounts/index.php" method="post">
             <label for="userFirstName">First Name:</label> <br>
             <input name="userFirstName" id="userFirstName" type="text"
@@ -38,12 +41,13 @@
             <br>
             <label for="userConfirm">Confirm Password:</label><br>
             <input name="userConfirm" id="userConfirm" type="password" required pattern="(?=^.{8,}$)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+
             <br>
             <br>
-            <input type="submit" name="submit" id="regbtn" value="Register">
+            <input class="form-button" type="submit" name="submit" value="Register"></div>
             <!--Add the action kew - value pair-->
             <input type="hidden" name="action" value="create_login">
         </form>
     </div>
 
-    <?php include 'common/footer.php'; ?>
+    <?php include '../common/footer.php'; ?>

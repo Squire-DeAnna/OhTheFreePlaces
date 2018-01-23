@@ -93,20 +93,20 @@ switch ($action) {
         $existingEmail = checkExistingEmail($userEmail);
         
         if ($existingEmail){
-            $message = '<p>The email address provided already exists. Please login with your existing email and password. </p>';
+            $message = '<p class="notice">The email address provided already exists. Please login with your existing email and password. </p>';
             include '../view/login.php';
             exit;
         }
         
         // Check for missing data
         if(empty($userFirstName) || empty($userLastName) || empty($userEmail) || empty($password) || empty($userConfirm)){
-            $message = '<p>Please provide information for all empty form fields.</p>';
+            $message = '<p class="notice">Please provide information for all empty form fields.</p>';
             include '../view/sign_up.php';
             exit;   
         }
         
         if($password != $userConfirm){
-            $message = '<p>Both password fields must match.</p>';
+            $message = '<p class="notice">Both password fields must match.</p>';
             include '../view/sign_up.php';
             exit;   
         }
@@ -119,11 +119,11 @@ switch ($action) {
         
         // Check and report the result
         if($regOutcome === 1){
-         $message = "<p>Thank you for registering $userFirstName. Please use your email and password to login.</p>";
+         $message = "<p class='success'>Thank you for registering $userFirstName. Please use your email and password to login.</p>";
          include '../view/login.php';
          exit;
         } else {
-         $message = "<p>Sorry $userFirstName, but the registration failed. Please try again.</p>";
+         $message = "<p class='notice'>Sorry $userFirstName, but the registration failed. Please try again.</p>";
          include '../view/sign_up.php';
          exit;
         }

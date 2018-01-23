@@ -26,12 +26,7 @@ p {
     color: #364652;
 }
 
-ul{
-    font-family: 'Open Sans', sans-serif;
-    color: #364652;
-    text-align: left;
-    list-style: none;
-}
+
 
 h1 {
     font-family: 'built_titlinglight';
@@ -185,7 +180,63 @@ a:hover{
   color: white;
 }
 
+.profile ul{
+    font-family: 'Open Sans', sans-serif;
+    color: #364652;
+    text-align: left;
+    list-style: none;
+}
 
+.login-form {
+    text-align: center;
+}
+
+.login-form .form-align{
+    display: inline-block;
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #364652;
+}
+
+.form-button{
+    display: inline-block;
+    background-color: #364652;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.form-button:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.sign-up{
+    background-color: #822432;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.sign-up:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.notice{
+    color: red;
+}
+
+.success {
+    font-weight: bold;
+}
 /* @Media for Mobile Displays */
 @media screen and (min-width: 320px) {
     nav ul {display: none;}
