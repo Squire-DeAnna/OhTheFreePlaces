@@ -38,6 +38,8 @@ h2 {
     font-family: 'built_titlinglight';
     font-weight: lighter;
     color: #364652;
+    font-size: 3.5em;
+    line-height: 20px;
 }
 
 .heading {
@@ -236,6 +238,32 @@ a:hover{
 
 .success {
     font-weight: bold;
+}
+
+.update-form{
+    text-align: center;
+    border: 3px solid #822432;;
+    padding: 15px;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+    color: #364652;
+}
+.update-form [type=submit]{
+    background-color: #364652;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.update-form [type=submit]:hover{
+    opacity: 0.8;
+}
+
+.update-form label{
+    display: inline-block;
+    text-align: left;
 }
 /* @Media for Mobile Displays */
 @media screen and (min-width: 320px) {

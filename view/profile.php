@@ -12,7 +12,12 @@
                            echo " ";
                            echo $_SESSION['userData']['userLastname'];
                            ?></h1>
-<p><strong>You are currently logged in.</strong></p>
+    <p><strong>You are currently logged in.</strong></p>
+    <?php
+            if (isset($message)) {
+             echo $message;
+            }
+            ?>
         <div class="profile">
             <ul class="profile">
                 <li><strong>First Name: </strong><?php 
@@ -26,5 +31,8 @@
                                ?></li>
             </ul>
         </div>
+    <a href='../accounts/index.php?action=update-account' title='Update Account Info'>
+        <p><strong>Update Account Information</strong></p>
+    </a>
     
     <?php include '../common/footer.php'; ?>
