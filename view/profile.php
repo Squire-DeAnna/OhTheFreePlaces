@@ -13,17 +13,18 @@
                            echo $_SESSION['userData']['userLastname'];
                            ?></h1>
 <p>You are currently logged in.</p>
-<ul id="profile">
-            <li>First Name: <?php 
-                           echo $_SESSION['userData']['userFirstname'];
-                           ?></li>
-            <li>Last Name:  <?php 
-                           echo $_SESSION['userData']['userLastname'];
-                           ?></li>
-            <li>Email:  <?php 
-                           echo $_SESSION['userData']['userEmail'];
-                           ?></li>
-        </ul>
-
+        <div class="profile">
+            <ul class="profile">
+                <li>First Name: <?php 
+                               echo $_SESSION['userData']['userFirstname'];
+                               ?></li>
+                <li>Last Name:  <?php 
+                               echo $_SESSION['userData']['userLastname'];
+                               ?></li>
+                <li>Email:  <?php 
+                               echo $_SESSION['userData']['userEmail'];
+                               ?></li>
+            </ul>
+        </div>
     
 <?php include '../common/footer.php'; ?>

@@ -26,10 +26,11 @@ p {
     color: #364652;
 }
 
-
-.login-form{
+ul{
     font-family: 'Open Sans', sans-serif;
+    color: #364652;
     text-align: left;
+    list-style: none;
 }
 
 h1 {
