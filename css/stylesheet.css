@@ -7,9 +7,16 @@
 
 }
 html,
-
+html, body{
+  padding: 0;
+  margin: 0;
+}
 html {
     background-color:  #364652;
+}
+
+body {
+    height: 100%;
 }
 
 main {
@@ -19,6 +26,7 @@ main {
     max-width: 1200px; 
     background-color: #FAFCF9;
     text-align: center;
+    height: 100%;
 }
 
 p {

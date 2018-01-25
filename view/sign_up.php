@@ -1,3 +1,10 @@
+<?php
+    if (isset($_SESSION['loggedin'])){
+        header('Location: ../index.php?action=home');
+    } else {
+        
+    }
+?>
 <?php include '../common/header.php'; ?>
     <h1 class="content-title">Sign Up</h1>
     <p>Fill in the form below to sign up for our website:</p>
