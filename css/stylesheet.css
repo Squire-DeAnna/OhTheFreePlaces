@@ -250,7 +250,7 @@ a:hover{
 
 .update-form{
     text-align: center;
-    border: 3px solid #822432;;
+    border: 3px solid #822432;
     padding: 15px;
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
@@ -272,6 +272,31 @@ a:hover{
 .update-form label{
     display: inline-block;
     text-align: left;
+}
+
+
+#attractions-table {
+    font-family: 'Open Sans', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#attractions-table td, #attractions-table th {
+    border: 1px solid #8e8e8e;
+    padding: 8px;
+    text-align: left;
+}
+
+#attractions-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#attractions-table tr:hover {background-color: #b2b2b2;}
+
+#attractions-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #822432;
+    color: white;
 }
 /* @Media for Mobile Displays */
 @media screen and (min-width: 320px) {

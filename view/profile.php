@@ -34,5 +34,14 @@
     <a href='../accounts/index.php?action=update-account' title='Update Account Info'>
         <p><strong>Update Account Information</strong></p>
     </a>
+    <?php 
+            if ($_SESSION['userData']['userLevel'] >= 5){
+                echo "<h2>Administrative Tools:</h2>"
+                     . "<p>Use the link below to manage activities, such as adding Cities, adding Attractions, and updating or deleting existing data.</p>"
+                     . "<a href='../attractions/' title='Attraction Management'> "
+                     . "<p><strong>Manage Attractions</strong></p>"
+                     . "</a>";
+            }
+        ?>
     
     <?php include '../common/footer.php'; ?>

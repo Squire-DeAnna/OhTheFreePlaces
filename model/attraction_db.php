@@ -1,7 +1,84 @@
 <?php
-class AttractionDB {
+
+//Get basic attraction information from the database for starting an update or delete process (table found on management page)
+function getAttractionBasics() {
+    $db = databaseConnect();
+    $sql = 'SELECT attractionName, attractionID FROM attraction ORDER BY attractionName ASC';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $attractions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $attractions;
+}
+//Get City names and IDs for Table drop-down
+function fetchCities() {
+    $db = databaseConnect();
+    $sql = 'SELECT cityName, cityID FROM city ORDER BY cityName ASC';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    
+    return $cities;
+}
+//Create the drop down list for States
+function createStatesDropDown() {
+   $states = fetchStates();
+   
+   $stateList = '<select name="stateID" id="stateID">';
+   $stateList .= '<option>Select a State</option>';
+   foreach ($states as $state) {
+       $stateList .= "<option value='$state[stateID]'";
+    if(isset($stateID)){
+        if($state['stateID'] === $stateID){
+            $stateList .= ' selected ';
+        }
+    }
+    $stateList .= ">$state[stateName]</option>";
+   }
+   $stateList .= '</select>';
+   
+   return $stateList;
+}
+
+//Add City to Database
+function addCity($cityName, $stateID){
+    // Create a connection object using the acme connection function
+    $db = databaseConnect();
+    // The SQL statement
+    $sql = 'INSERT INTO city (cityName, stateID) VALUES (:cityName, :stateID)';
+    // Create the prepared statement using the connection
+    $stmt = $db->prepare($sql);
+    // The next four lines replace the placeholders in the SQL
+    // statement with the actual values in the variables
+    // and tells the database the type of data it is
+    $stmt->bindValue(':stateID', $stateID, PDO::PARAM_STR);
+    $stmt->bindValue(':cityName', $cityName, PDO::PARAM_STR);
+    // Insert the data
+    $stmt->execute();
+    // Ask how many rows changed as a result of our insert
+    $rowsChanged = $stmt->rowCount();
+    // Close the database interaction
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+
+}
+
+
+/*class AttractionDB {
 //get attractions
 
+function getAttractionBasics($cityID) {
+    $db = databaseConnect();
+    $sql = 'SELECT attractionName, attractionID FROM attraction WHERE cityID = :cityID ORDER BY attractionName ASC';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':cityID', $cityID, PDO::PARAM_STR);
+    $stmt->execute();
+    $attractions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $attractions;
+}
     
 function get_attraction($attraction_id) {
     global $db;
@@ -164,4 +241,4 @@ class Attraction {
     public function setWebsite($value) {
         $this->website = $value;
     }
-}
+} */
