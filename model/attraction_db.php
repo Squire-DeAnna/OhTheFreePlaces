@@ -43,7 +43,7 @@ function createCityDropDown() {
             $cityList .= ' selected ';
         }
     }
-    $cityList .= ">$city[cityName]$city[stateID]</option>";
+    $cityList .= ">$city[cityName]</option>";
    }
    $cityList .= '</select>';
    
