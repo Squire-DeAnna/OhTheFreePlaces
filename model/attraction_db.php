@@ -10,17 +10,6 @@ function getAttractionBasics() {
     $stmt->closeCursor();
     return $attractions;
 }
-//Get City names and IDs for Table drop-down
-function fetchCities() {
-    $db = databaseConnect();
-    $sql = 'SELECT cityName, cityID FROM city ORDER BY cityName ASC';
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
-    $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
-    
-    return $cities;
-}
 //Create the drop down list for States
 function createStatesDropDown() {
    $states = fetchStates();
@@ -41,6 +30,46 @@ function createStatesDropDown() {
    return $stateList;
 }
 
+//Create the drop down list for Cities
+function createCityDropDown() {
+   $cities = fetchCities();
+   
+   $cityList = '<select name="cityID" id="cityID">';
+   $cityList .= '<option>Select a City</option>';
+   foreach ($cities as $city) {
+       $cityList .= "<option value='$city[cityID],$city[stateID]'";
+    if(isset($cityID)){
+        if($city['cityID'] === $cityID){
+            $cityList .= ' selected ';
+        }
+    }
+    $cityList .= ">$city[cityName]$city[stateID]</option>";
+   }
+   $cityList .= '</select>';
+   
+   return $cityList;
+}
+
+//Create the drop down list for Category
+function createCatDropDown() {
+   $categories = fetchCategories();
+   
+   $categoryList = '<select name="categoryID" id="categoryID">';
+   $categoryList .= '<option>Select a Category</option>';
+   foreach ($categories as $category) {
+       $categoryList .= "<option value='$category[categoryID]'";
+    if(isset($categoryID)){
+        if($city['categoryID'] === $categoryID){
+            $categoryList .= ' selected ';
+        }
+    }
+    $categoryList .= ">$category[categoryName]</option>";
+   }
+   $categoryList .= '</select>';
+   
+   return $categoryList;
+}
+
 //Add City to Database
 function addCity($cityName, $stateID){
     // Create a connection object using the acme connection function
@@ -54,6 +83,39 @@ function addCity($cityName, $stateID){
     // and tells the database the type of data it is
     $stmt->bindValue(':stateID', $stateID, PDO::PARAM_STR);
     $stmt->bindValue(':cityName', $cityName, PDO::PARAM_STR);
+    // Insert the data
+    $stmt->execute();
+    // Ask how many rows changed as a result of our insert
+    $rowsChanged = $stmt->rowCount();
+    // Close the database interaction
+    $stmt->closeCursor();
+    // Return the indication of success (rows changed)
+    return $rowsChanged;
+
+}
+
+//Add Attraction to Database
+function addAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC){
+    // Create a connection object using the acme connection function
+    $db = databaseConnect();
+    // The SQL statement
+    $sql = 'INSERT INTO attraction (cityID, categoryID, stateID, attractionName, cost, hours, streetAddress, phone, website, description, imgSRC) VALUES (:cityID, :categoryID, :stateID, :attractionName, :cost, :hours, :streetAddress, :phone, :website, :description, :imgSRC)';
+    // Create the prepared statement using the connection
+    $stmt = $db->prepare($sql);
+    // The next lines replace the placeholders in the SQL
+    // statement with the actual values in the variables
+    // and tells the database the type of data it is
+    $stmt->bindValue(':cityID', $cityID, PDO::PARAM_STR);
+    $stmt->bindValue(':categoryID', $categoryID, PDO::PARAM_STR);
+    $stmt->bindValue(':stateID', $stateID, PDO::PARAM_STR);
+    $stmt->bindValue(':attractionName', $attractionName, PDO::PARAM_STR);
+    $stmt->bindValue(':cost', $cost, PDO::PARAM_STR);
+    $stmt->bindValue(':hours', $hours, PDO::PARAM_STR);
+    $stmt->bindValue(':streetAddress', $streetAddress, PDO::PARAM_STR);
+    $stmt->bindValue(':phone', $phone, PDO::PARAM_STR);
+    $stmt->bindValue(':website', $website, PDO::PARAM_STR);
+    $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+    $stmt->bindValue(':imgSRC', $imgSRC, PDO::PARAM_STR);
     // Insert the data
     $stmt->execute();
     // Ask how many rows changed as a result of our insert

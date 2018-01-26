@@ -42,3 +42,25 @@ function fetchStates() {
    
    return $states;
 }
+
+function fetchCities() {
+   $db = databaseConnect();
+   $sql = 'SELECT cityName, cityID, stateID FROM city ORDER BY cityName ASC';
+   $stmt = $db->prepare($sql);
+   $stmt->execute();   
+   $cities = $stmt->fetchAll();
+   $stmt->closeCursor();
+   
+   return $cities;
+}
+
+function fetchCategories() {
+   $db = databaseConnect();
+   $sql = 'SELECT categoryName, categoryID FROM category ORDER BY categoryName ASC';
+   $stmt = $db->prepare($sql);
+   $stmt->execute();   
+   $categories = $stmt->fetchAll();
+   $stmt->closeCursor();
+   
+   return $categories;
+}

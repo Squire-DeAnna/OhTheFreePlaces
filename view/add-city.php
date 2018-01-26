@@ -30,7 +30,7 @@
             <?php echo $stateList; ?>
             <br>
             </div><br><br>
-            <input class="form-button" type="submit" name="submit" id="regbtn" value="Add City">
+            <input class="form-button" type="submit" name="submit" value="Add City">
             <!--Add the action kew - value pair-->
             <input type="hidden" name="action" value="addCity">
         </form>
