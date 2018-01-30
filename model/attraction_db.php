@@ -10,6 +10,17 @@ function getAttractionBasics() {
     $stmt->closeCursor();
     return $attractions;
 }
+//Get attraction info by city ID
+function getAttractionByID($cityID) {
+    $db = databaseConnect();
+    $sql = 'SELECT attractionName, attractionID FROM attraction WHERE cityID = :cityID ORDER BY attractionName ASC';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':cityID', $cityID, PDO::PARAM_STR);
+    $stmt->execute();
+    $attractions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $attractions;
+}
 //Create the drop down list for States
 function createStatesDropDown() {
    $states = fetchStates();
@@ -168,17 +179,6 @@ function getAttractionInfo($attractionID){
 
 /*class AttractionDB {
 //get attractions
-
-function getAttractionBasics($cityID) {
-    $db = databaseConnect();
-    $sql = 'SELECT attractionName, attractionID FROM attraction WHERE cityID = :cityID ORDER BY attractionName ASC';
-    $stmt = $db->prepare($sql);
-    $stmt->bindValue(':cityID', $cityID, PDO::PARAM_STR);
-    $stmt->execute();
-    $attractions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
-    return $attractions;
-}
     
 function get_attraction($attraction_id) {
     global $db;

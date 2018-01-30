@@ -226,13 +226,18 @@ switch ($action) {
         }
         
         break;
+    case 'createTable':
+        $location_data = filter_input(INPUT_POST, 'cityID', FILTER_SANITIZE_STRING);
+        $values = explode(",", $location_data);
+        $cityID = $values[0];
+        
+        $attractions = getAttractionByID($cityID);
+        $attractionList = createTable($attractions);
+        
+        include '../view/attraction_mgmt.php';
+        break;
     //Index will "Default" to the attraction management page if no action is found. The management page restricts users with no admin level and they will be redirected to the home page
         case 'home':
-            //Collect City names and IDs for the Attractions Table
-            //$cities = getCityBasics();
-            //Create Cities Drop Down selection list
-            //$cityList = createCityDropdown($cities);
-
             $attractions = getAttractionBasics();
 
             $attractionList = createTable($attractions);

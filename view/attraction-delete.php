@@ -51,7 +51,7 @@
     <h1 class='content-title'>Remove Attraction</h1>
         <p>Review the information present in the fields below.</p>
         <p>Click the button below to remove the attraction listed.</p>
-        <h2><?php if(isset($attractionInfo['attractionName'])){ echo "Modify $attractionInfo[attractionName] ";} elseif(isset($attractionName)) { echo $attractionName; }?></h2>
+        <h2><?php if(isset($attractionInfo['attractionName'])){ echo "$attractionInfo[attractionName] ";} elseif(isset($attractionName)) { echo $attractionName; }?></h2>
         
     <?php
         if (isset($message)) {

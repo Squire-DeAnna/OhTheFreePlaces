@@ -7,6 +7,23 @@
         header('Location: ../index.php?action=home');
     }
 ?>
+<?php
+//Create Cities drop down
+    $cities = fetchCities();
+
+       $cityList = '<select name="cityID" id="cityID">';
+       $cityList .= '<option value=0,0>Select a City</option>';
+       foreach ($cities as $city) {
+           $cityList .= "<option value='$city[cityID],$city[stateID]'";
+        if(isset($cityID)){
+            if($city['cityID'] === $cityID ){
+                $cityList .= ' selected ';
+            }
+        }
+        $cityList .= ">$city[cityName], $city[StateName]</option>";
+       }
+       $cityList .= '</select>';
+?>
 <?php include '../common/header.php'; ?>
 
     <h1 class='content-title'>Attraction Management</h1>
@@ -27,16 +44,17 @@
         </a>
     
     <p>Below is a list of existing attractions. You can modify or delete their information by clicking the respective link next to each item.</p>
-    <!--<div class="login-form">
+    <div class="login-form">
         <div class="form-align">
-        <form action="#" method="post">
-            <label for="cityID">Select a City:</label><br>
+            <form action="../attractions/index.php" method="post">
+            <label for="cityID">Select a Specific City to show Attractions for:</label> <br>
             <?php echo $cityList; ?>
             <br>
-            </div><br>
-            <input class="form-button" type="submit" name="submit" value="Go">
-        </form>
-    </div> -->
+            </div><br><br>
+            <input class="form-button" type="submit" name="submit" value="Find Attractions">
+            <!--Add the action kew - value pair-->
+            <input type="hidden" name="action" value="createTable">
+            </form> <br><br>
         <?php
         if (isset($attractionList)) {
          echo $attractionList;

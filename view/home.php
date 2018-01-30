@@ -8,5 +8,5 @@
         state that you want to go to, then click on the links in the navigation bar to 
         view the attractions in those areas. Don't see the city you're looking for or want 
         to know more about the attraction? Request it through our feedback link.</p>
-
+        
     <?php include 'common/footer.php';?>
