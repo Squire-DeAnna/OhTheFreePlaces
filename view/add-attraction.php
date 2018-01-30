@@ -1,12 +1,42 @@
 <?php
     if ($_SESSION['userData']['userLevel'] >= 5){   
-        //create state drop down
-        $stateList = createStatesDropDown();
-        $cityList = createCityDropDown();
-        $categoryList = createCatDropDown();
+       //$cityList = createCityDropDown();
+
     } else {
         header('Location: ../index.php?action=home');
     }
+?>
+<?php
+    //create the Drop Down Lists
+        $cities = fetchCities();
+
+       $cityList = '<select name="cityID" id="cityID">';
+       $cityList .= '<option value=0,0>Select a City</option>';
+       foreach ($cities as $city) {
+           $cityList .= "<option value='$city[cityID],$city[stateID]'";
+        if(isset($cityID)){
+            if($city['cityID'] === $cityID ){
+                $cityList .= ' selected ';
+            }
+        }
+        $cityList .= ">$city[cityName], $city[StateName]</option>";
+       }
+       $cityList .= '</select>';
+       
+       $categories = fetchCategories();
+   
+        $categoryList = '<select name="categoryID" id="categoryID">';
+        $categoryList .= '<option>Select a Category</option>';
+        foreach ($categories as $category) {
+            $categoryList .= "<option value='$category[categoryID]'";
+         if(isset($categoryID)){
+             if($category['categoryID'] === $categoryID){
+                 $categoryList .= ' selected ';
+             }
+         }
+         $categoryList .= ">$category[categoryName]</option>";
+        }
+   $categoryList .= '</select>';
 ?>
 <?php include '../common/header.php'; ?>
 
@@ -71,12 +101,8 @@
             }
             ?> > <br>
             <label for="description">Description:</label> <br>
-            <textarea rows="4" cols="50" name="description" id="description" type="text"
-            <?php
-            if (isset($description)) {
-                echo "value='$description'";
-            }
-            ?> > </textarea><br>
+            <textarea rows="4" cols="50" name="description" id="description" type="text"><?php if (isset($description)) {echo $description;}?></textarea>
+            <br>
             <label for="imgSRC">Image Name with file extension (Default will be placeholder.jpg):</label> <br>
             <input name="imgSRC" id="imgSRC" type="text"
             <?php

@@ -2,6 +2,7 @@
     if ($_SESSION['userData']['userLevel'] >= 5){   
         //create state drop down
         $stateList = createStatesDropDown();
+        $cityList = createCityDropDown();
     } else {
         header('Location: ../index.php?action=home');
     }
@@ -16,6 +17,7 @@
          echo $message;
         }
     ?>
+    <div class="update-form">
     <div class="login-form">
         <div class="form-align">
             <form action="../attractions/index.php" method="post">
@@ -34,11 +36,29 @@
             <!--Add the action kew - value pair-->
             <input type="hidden" name="action" value="addCity">
         </form>
+            </div>
+        </div>
+        <br><br>
+        <div class="update-form">
+    <div class="login-form">
+        <div class="form-align">
+        <form action="../attractions/index.php" method="post">
+            <label for="cityID">Select City:</label> <br>
+            <?php echo $cityList; ?>
+            <br>
+            </div><br><br>
+            <input class="form-button" type="submit" name="submit" value="Remove City">
+            <!--Add the action kew - value pair-->
+            <input type="hidden" name="action" value="removeCity">
+        </form>
+            </div>
+        </div>
         <br><br>
         <a href="../attractions/index.php">
             <h3 class="register-button"><p><strong>Return to Attraction Management</strong></p></h3>
         </a>
-    </div>
+
+    
     <br>
     
 <?php include '../common/footer.php'; ?>

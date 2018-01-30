@@ -35,20 +35,21 @@ function createCityDropDown() {
    $cities = fetchCities();
    
    $cityList = '<select name="cityID" id="cityID">';
-   $cityList .= '<option>Select a City</option>';
+   $cityList .= '<option value=0,0>Select a City</option>';
    foreach ($cities as $city) {
        $cityList .= "<option value='$city[cityID],$city[stateID]'";
     if(isset($cityID)){
-        if($city['cityID'] === $cityID){
+        if($city[cityID] === $cityID ){
             $cityList .= ' selected ';
         }
     }
-    $cityList .= ">$city[cityName]</option>";
+    $cityList .= ">$city[cityName], $city[StateName]</option>";
    }
    $cityList .= '</select>';
    
    return $cityList;
 }
+
 
 //Create the drop down list for Category
 function createCatDropDown() {
@@ -94,6 +95,18 @@ function addCity($cityName, $stateID){
 
 }
 
+//Remove City from database
+function deleteCity($cityId) {
+    $db = databaseConnect();
+    $sql = 'DELETE FROM city WHERE cityID = :cityID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':cityID', $cityID, PDO::PARAM_INT);
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $rowsChanged;
+}
+
 //Add Attraction to Database
 function addAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC){
     // Create a connection object using the acme connection function
@@ -126,6 +139,31 @@ function addAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $
     return $rowsChanged;
 
 }
+
+//Remove Attraction from database
+function deleteAttraction($attractionID) {
+    $db = databaseConnect();
+    $sql = 'DELETE FROM attraction WHERE attractionID = :attractionID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':attractionID', $attractionID, PDO::PARAM_INT);
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $rowsChanged;
+}
+
+// Get attraction information by attractionId
+function getAttractionInfo($attractionID){
+    $db = databaseConnect();
+    $sql = 'SELECT * FROM attraction WHERE attractionID = :attractionID';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':attractionID', $attractionID, PDO::PARAM_INT);
+    $stmt->execute();
+    $attractionInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $attractionInfo;
+}
+
 
 
 /*class AttractionDB {

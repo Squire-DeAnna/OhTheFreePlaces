@@ -19,15 +19,12 @@
     <p>Welcome to the attraction management page. You may currently add new cities, attractions, and edit or delete existing cities or attractions.</p>
     <p>Please choose an option below:</p>
    
-    <a href="../attractions/index.php?action=add-city" title="Add New City">
-        <p><strong>Add a New City</strong></p>
+    <a href="../attractions/index.php?action=manage-city" title="Add New City">
+        <p><strong>Add / Remove a City</strong></p>
     </a>
         <a href="../attractions/index.php?action=add-attraction" title="Add new Attraction">
             <p><strong>Add a New Attraction</strong></p>
         </a>
-    <a href="../attractions/index.php?action=remove-city" title="Delete City">
-        <p><strong>Delete Existing City</strong></p>
-    </a>
     
     <p>Below is a list of existing attractions. You can modify or delete their information by clicking the respective link next to each item.</p>
     <!--<div class="login-form">

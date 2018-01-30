@@ -44,9 +44,9 @@ switch ($action) {
         include '../view/attraction_mgmt.php';
         break;
     //Send to Add City page
-    case 'add-city':
+    case 'manage-city':
                
-        include '../view/add-city.php';
+        include '../view/manage-city.php';
         break;
     //Adding a new City Action
     case 'addCity':
@@ -55,13 +55,13 @@ switch ($action) {
         
         if(empty($cityName)){
             $message = '<p class="notice">Please provide a name for the city.</p>';
-            include '../view/add-city.php';
+            include '../view/manage-city.php';
             exit;   
         }
         
         if ($stateID == "Select a State"){
            $message = '<p class="notice">You must select a state where the city resides.</p>';
-            include '../view/add-city.php';
+            include '../view/manage-city.php';
             exit;
         }
         
@@ -76,13 +76,32 @@ switch ($action) {
          exit;
         } else {
          $message = "<p class='notice'>Sorry, but the city addition failed. Please try again.</p>";
-         include '../view/add-city.php';
+         include '../view/manage-city.php';
          exit;
         }
         
         break;
+    //Remove city Action
+    case 'removeCity':
+        $location_data = filter_input(INPUT_POST, 'cityID', FILTER_SANITIZE_STRING);
+        $values = explode(",", $location_data);
+        $cityID = $values[0];
+
+        $deleteResult = deleteCity($cityID);
+        if ($deleteResult) {
+            $message = "<p class='success'>Congratulations, the city was successfully removed.</p>";
+            $_SESSION['message'] = $message;
+            header('location:../attractions/index.php?action=home');
+            exit;
+        } else {
+            $message = "<p class='notice'>Error: The city was not deleted. Please try again.</p>";
+            include '../view/manage-city.php';
+            exit;
+        }        
+        
+        break;
     //Send to Add Attraction page
-        case 'add-attraction':
+    case 'add-attraction':
 
             include '../view/add-attraction.php';
             break;  
@@ -109,10 +128,16 @@ switch ($action) {
             exit;   
         }
         
-        if ($cityID == "Select a City"){
+        if ($cityID == 0){
            $message = '<p class="notice">You must select a city where the attraction resides.</p>';
+
             include '../view/add-attraction.php';
             exit;
+        } else {
+            $location_data = filter_input(INPUT_POST, 'cityID', FILTER_SANITIZE_STRING);
+            $values = explode(",", $location_data);
+            $cityID = $values[0];
+            $stateID = $values[1];
         }
         
         if ($categoryID == "Select a Category"){
@@ -139,6 +164,65 @@ switch ($action) {
          $message = "<p class='notice'>Sorry, but the attraction addition failed. Please try again.</p>";
          include '../view/add-attraction.php';
          exit;
+        }
+        
+        break;
+    //Click Manage on the attraction. Pulls the id to create "attractionInfo" to fill the page
+    case 'update-attraction':
+        $attractionID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $attractionInfo = getAttractionInfo($attractionID);
+        if(count($attractionInfo)<1){
+         $message = 'Sorry, no attraction information could be found.';
+        }
+        include '../view/attraction-update.php';
+        exit;
+    break;
+    case 'delete-attraction':
+        $attractionID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $attractionInfo = getAttractionInfo($attractionID);
+        if(count($attractionInfo)<1){
+         $message = 'Sorry, no attraction information could be found.';
+        }
+        include '../view/attraction-delete.php';
+        exit;
+    break;
+    //Remove Attraction Action
+    case 'removeAttraction':
+        $attractionID = filter_input(INPUT_POST, 'attractionID', FILTER_SANITIZE_STRING);
+
+        $deleteResult = deleteAttraction($attractionID);
+        if ($deleteResult) {
+            $message = "<p class='success'>Congratulations, the attraction was successfully removed.</p>";
+            $_SESSION['message'] = $message;
+            header('location:../attractions/index.php?action=home');
+            exit;
+        } else {
+            $message = "<p class='notice'>Error: The attraction was not deleted. Please try again.</p>";
+            include '../view/attraction-delete.php';
+            exit;
+        }        
+        break;
+    //Update Attraction Action
+    case 'updateAttraction':
+        $location_data = filter_input(INPUT_POST, 'cityID', FILTER_SANITIZE_STRING);
+        $values = explode(",", $location_data);
+        $cityID = $values[0];
+        $stateID = $values[1];
+        
+        $categoryID = filter_input(INPUT_POST, 'categoryID', FILTER_SANITIZE_STRING);
+        $attractionName = filter_input(INPUT_POST, 'attractionName', FILTER_SANITIZE_STRING);
+        $cost = filter_input(INPUT_POST, 'cost', FILTER_SANITIZE_STRING);
+        $hours = filter_input(INPUT_POST, 'hours', FILTER_SANITIZE_STRING);
+        $streetAddress = filter_input(INPUT_POST, 'streetAddress', FILTER_SANITIZE_STRING);
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
+        $website = filter_input(INPUT_POST, 'website', FILTER_SANITIZE_STRING);
+        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+        $imgSRC = filter_input(INPUT_POST, 'imgSRC', FILTER_SANITIZE_STRING);
+        
+        if(empty($attractionName) || empty($cost) || empty($hours) || empty($streetAddress)){
+            $message = '<p class="notice">Please fill out all required fields marked with a star.</p>';
+            include '../view/attraction-update.php';
+            exit;   
         }
         
         break;

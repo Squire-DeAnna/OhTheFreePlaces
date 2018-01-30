@@ -31,7 +31,7 @@ function createTable($attractions){
           }
           return $attractionList;
 }
-
+//Fetch the list of state for its drop down list
 function fetchStates() {
    $db = databaseConnect();
    $sql = 'SELECT stateName, stateID FROM state ORDER BY stateName ASC';
@@ -42,10 +42,10 @@ function fetchStates() {
    
    return $states;
 }
-
+//Fetch cities, with their coresponding state, for the drop down 
 function fetchCities() {
    $db = databaseConnect();
-   $sql = 'SELECT cityName, cityID, stateID FROM city ORDER BY cityName ASC';
+   $sql = "SELECT t1.cityName, t1.cityID, t1.stateID, t2.stateCode as StateName FROM city t1 left Join state t2 on t2.stateID = t1.stateID ORDER BY stateID ASC";
    $stmt = $db->prepare($sql);
    $stmt->execute();   
    $cities = $stmt->fetchAll();
@@ -53,7 +53,7 @@ function fetchCities() {
    
    return $cities;
 }
-
+//fetch the categories that an attraction can belong to for its drop down
 function fetchCategories() {
    $db = databaseConnect();
    $sql = 'SELECT categoryName, categoryID FROM category ORDER BY categoryName ASC';
