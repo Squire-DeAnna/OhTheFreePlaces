@@ -2,10 +2,26 @@
     if ($_SESSION['userData']['userLevel'] >= 5){   
         //create state drop down
         $stateList = createStatesDropDown();
-        $cityList = createCityDropDown();
     } else {
         header('Location: ../index.php?action=home');
     }
+?>
+<?php
+//Create Cities drop down
+    $cities = fetchCities();
+
+       $cityList = '<select name="cityID" id="cityID">';
+       $cityList .= '<option value=0,0>Select a City</option>';
+       foreach ($cities as $city) {
+           $cityList .= "<option value='$city[cityID],$city[stateID]'";
+        if(isset($cityID)){
+            if($city['cityID'] === $cityID ){
+                $cityList .= ' selected ';
+            }
+        }
+        $cityList .= ">$city[cityName], $city[StateName]</option>";
+       }
+       $cityList .= '</select>';
 ?>
 <?php include '../common/header.php'; ?>
 

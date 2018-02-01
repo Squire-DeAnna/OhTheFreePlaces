@@ -107,7 +107,7 @@ function addCity($cityName, $stateID){
 }
 
 //Remove City from database
-function deleteCity($cityId) {
+function deleteCity($cityID) {
     $db = databaseConnect();
     $sql = 'DELETE FROM city WHERE cityID = :cityID';
     $stmt = $db->prepare($sql);

@@ -22,7 +22,7 @@ main {
     max-width: 1200px; 
     background-color: #FAFCF9;
     text-align: center;
-    min-height: 70%;
+    min-height: 74%;
 }
 
 .icons{
@@ -64,6 +64,7 @@ h2 {
 footer p{
     text-align: right;
     color: white;
+    margin-top: 0px;
 }
 header {
     position:relative;

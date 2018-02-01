@@ -55,6 +55,7 @@
             <!--Add the action kew - value pair-->
             <input type="hidden" name="action" value="createTable">
             </form> <br><br>
+        </div>
         <?php
         if (isset($attractionList)) {
          echo $attractionList;
