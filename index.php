@@ -29,7 +29,7 @@ switch ($action) {
         include 'view/home.php';
         break;
     case 'template':
-        include 'view/template.php';
+        include 'view/city-list.php';
         break;
     case '500':
         include 'view/500.php';

@@ -1,10 +1,9 @@
 @font-face {
     font-family: 'built_titlinglight';
-    src: url('/templates/css/fonts/built_titling_lt-webfont.woff2') format('woff2'),
-         url('/templates/css/fonts/built_titling_lt-webfont.woff') format('woff');
+    src: url('../css/fonts/built_titling_lt-webfont.woff2') format('woff2'),
+         url('../css/fonts/built_titling_lt-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 html,
 html, body{
@@ -23,10 +22,16 @@ main {
     max-width: 1200px; 
     background-color: #FAFCF9;
     text-align: center;
+    min-height: 70%;
 }
 
-.stretch {
-    height: 85%;
+.icons{
+    margin-top: 0px;
+    margin:  0 auto;
+    width: 100%;
+    max-width: 1200px; 
+    background-color: #FAFCF9;
+    text-align: center;
 }
 
 p {
@@ -40,6 +45,7 @@ h1 {
     font-family: 'built_titlinglight';
     font-weight: lighter;
     color: #364652;
+    margin-top: 10px;
 }
 
 h2 {
@@ -158,6 +164,7 @@ a:hover{
 .content-title {
     font-size: 90px;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .fa {
@@ -235,6 +242,36 @@ a:hover{
 }
 
 .sign-up:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.city-list {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.city-list a{
+    font-size: 45px;
+    font-family: 'built_titlinglight';
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.cities{
+    display: inline-block;
+    background-color: #822432;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.cities:hover{
     opacity: 0.8;
     cursor: pointer;
 }
