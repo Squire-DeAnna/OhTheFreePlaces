@@ -9,11 +9,6 @@ require('model/review_db.php');
 require('model/state_db.php');
 require('model/attraction_db.php');
 
-//$cityDB = new CityDB();
-//$stateDB = new StateDB();
-//$attractionDB = new AttractionDB();
-
-$error = '';
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {

@@ -14,12 +14,6 @@ require_once '../library/functions.php';
 // Accounts / User Model
 require_once '../model/user_db.php';
 
-//get UserDB class
-//$userDB = new UserDB();
-
-//error message variable
-$error = '';
-
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {

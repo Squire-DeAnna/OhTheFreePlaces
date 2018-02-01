@@ -10,13 +10,6 @@ require_once '../model/attraction_db.php';
 require_once '../library/functions.php';
 require_once '../model/user_db.php';
 
-//get CityDB class
-
-
-
-//error message variable
-//$error = '';
-
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
