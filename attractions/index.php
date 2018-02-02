@@ -170,6 +170,7 @@ switch ($action) {
         include '../view/attraction-update.php';
         exit;
     break;
+    //Delete attraction page
     case 'delete-attraction':
         $attractionID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         $attractionInfo = getAttractionInfo($attractionID);

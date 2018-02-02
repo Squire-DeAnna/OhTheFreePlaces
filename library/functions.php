@@ -45,7 +45,7 @@ function fetchStates() {
 //Fetch cities, with their coresponding state, for the drop down 
 function fetchCities() {
    $db = databaseConnect();
-   $sql = "SELECT t1.cityName, t1.cityID, t1.stateID, t2.stateCode as StateName FROM city t1 left Join state t2 on t2.stateID = t1.stateID ORDER BY stateID ASC";
+   $sql = "SELECT t1.cityName, t1.cityID, t1.stateID, t1.mapURL, t2.stateCode as StateName FROM city t1 left Join state t2 on t2.stateID = t1.stateID ORDER BY stateID ASC";
    $stmt = $db->prepare($sql);
    $stmt->execute();   
    $cities = $stmt->fetchAll();

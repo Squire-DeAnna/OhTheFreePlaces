@@ -336,6 +336,97 @@ a:hover{
     background-color: #822432;
     color: white;
 }
+
+.map iframe{
+    border-color: #822432;
+    border-width: 10px;
+    border-style: solid;
+    float: right;
+    margin-right: 0px;
+    box-shadow: 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.attraction-links a{
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 39px;
+    overflow: hidden;
+    float: left;
+    margin-left: 15px;
+    
+    
+}
+.attraction-links img{
+     position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+    display: inline-block;
+    box-sizing: border-box;
+    
+}
+
+a.hovertext {
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    height: 325px;
+    text-decoration: none !important;
+    text-align: left;
+    line-height:26px;
+    margin-top: 15px;
+    
+  }
+  a.hovertext::after {
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgba(54, 70, 82, 0.5);
+    font-weight: lighter;
+    font-size: 1.7em;
+    content: attr(title);
+    position: absolute;
+    padding-left: 3px;
+    padding-top: 3px;
+    padding-bottom: 1px;
+    left: 0;
+    bottom: 270px;
+    width: 197px;
+    text-decoration: none !important;
+    color: white;
+    opacity: 1;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+  }
+  a.hovertext:hover::after, a.hovertext:focus::after {
+    opacity: 0.4;
+  }
+  
+  .list-button{
+    background-color: #822432;
+    border: none;
+    color: white;
+    padding-bottom: 0px;
+    text-decoration: none;
+    font-size: 34px;
+    font-family: 'built_titlinglight';
+    font-weight: lighter;
+    
+}
+
+.list-button:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.list-div{
+    display: inline-block;
+}
 /* @Media for Mobile Displays */
 @media screen and (min-width: 320px) {
     nav ul {display: none;}
@@ -348,6 +439,9 @@ a:hover{
     }
     .dropdown-content a {
         font-size: 40px;
+    }
+    .map iframe{
+        margin-right: 40px;
     }
 }
 
