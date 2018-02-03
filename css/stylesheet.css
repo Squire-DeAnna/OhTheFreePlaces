@@ -349,7 +349,7 @@ a:hover{
 .attraction-links a{
     display: inline-block;
     position: relative;
-    width: 200px;
+    width: 190px;
     height: 39px;
     overflow: hidden;
     float: left;
@@ -374,8 +374,8 @@ a:hover{
 a.hovertext {
     position: relative;
     width: 100%;
-    max-width: 200px;
-    height: 325px;
+    max-width: 190px;
+    height: 300px;
     text-decoration: none !important;
     text-align: left;
     line-height:26px;
@@ -384,16 +384,16 @@ a.hovertext {
   }
   a.hovertext::after {
     font-family: 'Open Sans', sans-serif;
-    background-color: rgba(54, 70, 82, 0.5);
+    background-color: rgba(54, 70, 82, 0.8);
     font-weight: lighter;
-    font-size: 1.7em;
+    font-size: 1.2em;
     content: attr(title);
     position: absolute;
     padding-left: 3px;
     padding-top: 3px;
     padding-bottom: 1px;
     left: 0;
-    bottom: 270px;
+    margin-bottom: 270px;
     width: 197px;
     text-decoration: none !important;
     color: white;
