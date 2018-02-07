@@ -6,7 +6,7 @@ function createCityButtons() {
    
    $cityList = '';
    foreach ($cities as $city) {
-       $cityList .= "<a href='../attraction-search?action=attraction-list&id=$city[cityID]' class='cities'>$city[cityName], $city[StateName]</a>";
+       $cityList .= "<a href='../attraction-search?action=attraction-list&id=$city[cityID]&category=0' class='cities'>$city[cityName], $city[StateName]</a>";
    }
    
    return $cityList;
@@ -42,4 +42,17 @@ function createList($attractions){
              $attractionList = '<p class="notice">Sorry, no attractions were returned for this location.</p>';
           }
           return $attractionList;
+}
+
+//get Attraction by cityID and categoryID
+function getAttractionByCategory($cityID, $categoryID) {
+    $db = databaseConnect();
+    $sql = 'SELECT attractionName, attractionID, imgSRC FROM attraction WHERE cityID = :cityID AND categoryID = :categoryID ORDER BY attractionName ASC';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':cityID', $cityID, PDO::PARAM_STR);
+    $stmt->bindValue(':categoryID', $categoryID, PDO::PARAM_STR);
+    $stmt->execute();
+    $attractions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $attractions;
 }

@@ -31,16 +31,29 @@ switch ($action) {
     //Attraction List View
     case 'attraction-list':
         $cityID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $categoryID = filter_input(INPUT_GET, 'category', FILTER_VALIDATE_INT);
         
         $cityInfo = fetchCityByID($cityID);
  
-        $attractions = getAttractionByID($cityID);
-        
+        if ($categoryID > 0) {
+            $attractions = getAttractionByCategory($cityID, $categoryID);
+        } else {
+            $attractions = getAttractionByID($cityID);
+        }
+
         $attractionList = createList($attractions);
+
         
         include '../view/attraction-list.php';
         
         break;
-
+    case 'attraction-info':
+        $attractionID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        
+        $attractionInfo = getAttractionInfo($attractionID);
+        
+        include '../view/attraction-info.php';
+        
+        break;
 }
 

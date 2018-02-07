@@ -164,9 +164,19 @@ a:hover{
 }
 
 .content-title {
+    
     font-size: 90px;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.info-title {
+    font-size: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #822432;
+    color: white;
 }
 
 .fa {
@@ -233,6 +243,7 @@ a:hover{
     opacity: 0.8;
     cursor: pointer;
 }
+
 
 .sign-up{
     background-color: #822432;
@@ -427,6 +438,39 @@ a.hovertext {
 .list-div{
     display: inline-block;
 }
+
+.info-div {
+    margin-top: 40px;
+}
+
+.attraction-info {
+    font-size: 1.3em;
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+}
+
+  .return-button{
+    background-color: #364652;
+    border: none;
+    color: white;
+    padding-bottom: 0px;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 40px;
+    font-family: 'built_titlinglight';
+    font-weight: lighter;
+    
+}
+
+.return-button:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
 /* @Media for Mobile Displays */
 @media screen and (min-width: 320px) {
     nav ul {display: none;}
@@ -443,6 +487,11 @@ a.hovertext {
     .map iframe{
         margin-right: 40px;
     }
+    .attraction-img {
+        float: left;
+        margin-left: 10%;
+    }
+    
 }
 
 @media screen and (min-width: 599px) {
