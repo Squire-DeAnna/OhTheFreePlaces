@@ -49,11 +49,19 @@ h1 {
     margin-top: 10px;
 }
 
-h2 {
+h2  {
     font-family: 'built_titlinglight';
     font-weight: lighter;
     color: #364652;
     font-size: 3.5em;
+    line-height: 20px;
+}
+
+h3  {
+    font-family: 'built_titlinglight';
+    font-weight: lighter;
+    color: #364652;
+    font-size: 2.5em;
     line-height: 20px;
 }
 
@@ -465,6 +473,26 @@ a.hovertext {
     font-family: 'built_titlinglight';
     font-weight: lighter;
     
+}
+
+
+#review-display{
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    list-style: none;
+    background: #648196;
+}
+#review-display li{
+    padding-bottom: 10px;
+    padding-right: 7px;
+    color: white;
+}
+.reviewBox {
+    background: white;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
 }
 
 .return-button:hover{

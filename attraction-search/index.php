@@ -11,6 +11,8 @@ session_start();
 require_once '../library/database.php';
 require_once '../model/attraction_db.php';
 require_once '../model/search_db.php';
+require_once '../model/review_db.php';
+require_once '../model/user_db.php';
 require_once '../library/functions.php';
 
 
@@ -49,8 +51,15 @@ switch ($action) {
         break;
     case 'attraction-info':
         $attractionID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $reviews = getReviewsByAttractionId($attractionID);
         
         $attractionInfo = getAttractionInfo($attractionID);
+        
+        if(!count($reviews)){
+         $reviewDisplay = "<p class='notice'>No reviews have been made for this attraction yet.</p>";
+        } else {
+         $reviewDisplay = buildReviewsDisplay($reviews);
+        }
         
         include '../view/attraction-info.php';
         

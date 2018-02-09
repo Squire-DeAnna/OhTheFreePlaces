@@ -34,7 +34,11 @@ function createList($attractions){
               $attractionList .=  "<a class='hovertext' href='../attraction-search?action=attraction-info&id=$attraction[attractionID]' title='$attraction[attractionName]'>";
               $attractionList .=  "<img src='../img/$attraction[imgSRC]' alt='attraction-thumbnail'>";
               $attractionList .=  "</a><div>";
-              $attractionList .=  "<a href='#' class='list-button'>Add to My List</a>";
+              if (isset($_SESSION['loggedin'])){
+                $attractionList .=  "<a href='#' class='list-button'>Add to My List</a>";
+              } else {
+                $attractionList .=  "<a href='../accounts/index.php?action=login' class='list-button'>Add to My List</a>";  
+              }
               $attractionList .= '</div></div>';
             }
 
