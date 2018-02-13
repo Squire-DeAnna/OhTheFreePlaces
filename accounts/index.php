@@ -9,11 +9,11 @@ session_start();
 
 //database connection file
 require_once '../library/database.php';
-//Functions File
-require_once '../library/functions.php';
-// Accounts / User Model
+require_once '../model/attraction_db.php';
+require_once '../model/search_db.php';
 require_once '../model/user_db.php';
-
+require_once '../model/review_db.php';
+require_once '../library/functions.php';
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -125,7 +125,12 @@ switch ($action) {
         
         //View User Profile Page
     case 'profile':
-        
+        $reviews = getReviewsByUserId($_SESSION['userData']['userId']);
+            if(!count($reviews)){
+                $message2 = "<p class='notice'>Sorry, you have not made any attraction reviews yet.</p>";
+               } else {
+                $reviewDisplay = buildAdminReviewsDisplay($reviews);
+            }
         
         include('../view/profile.php');
         break;

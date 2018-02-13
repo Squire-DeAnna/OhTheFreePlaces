@@ -499,6 +499,21 @@ a.hovertext {
     opacity: 0.8;
     cursor: pointer;
 }
+
+.admin-review {
+    list-style: none;
+    font-family: 'Open Sans', sans-serif;
+    background: white;
+    color: #364652;
+    padding-left: 0px;
+}
+
+.admin-review li{
+     background-color: #91CAE0;;
+     margin: 2px 0 0 0;
+     padding: 10px;
+     list-style-type: none;
+}
 /* @Media for Mobile Displays */
 @media screen and (min-width: 320px) {
     nav ul {display: none;}

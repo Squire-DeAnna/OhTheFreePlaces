@@ -42,7 +42,7 @@ function getReviewsByAttractionId($attractionID){
 //Function to get reviews by userID
 function getReviewsByUserId($userID){
     $db = databaseConnect();
-    $sql = 'SELECT * FROM review WHERE userID IN (SELECT userID FROM review WHERE userID = :userID)';
+    $sql = 'SELECT * FROM review WHERE userID IN (SELECT userID FROM review WHERE userID = :userID) ORDER BY reviewID DESC';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':userID', $userID, PDO::PARAM_STR);
     $stmt->execute();
@@ -113,15 +113,14 @@ function buildReviewsDisplay($reviews){
 }
 
 function buildAdminReviewsDisplay($reviews){
- $rd = '<ul>';
+ $rd = '<ul class="admin-review">';
  foreach ($reviews as $review) {
   $phpdate = strtotime($review['reviewDate']);
   $mysqldate = date( 'd M, Y', $phpdate );
-  $attractionInfo = getAttractionInfo($review['attracionID']);
+  $attractionInfo = getAttractionInfo($review['attractionID']);
   $rd .= '<li>';
-  $rd .= "<strong>$attractionInfo[attracionName]</strong> (Reviewed on $mysqldate): ";
-  $rd .= "<a href='/acme/reviews?action=mod&id=$review[reviewID]' title='Click to modify'>Modify</a> | ";
-  $rd .= "<a href='/acme/reviews?action=del&id=$review[reviewID]' title='Click to delete'>Delete</a>";
+  $rd .= "<strong>$attractionInfo[attractionName]</strong> (Reviewed on $mysqldate): ";
+  $rd .= "<a href='../reviews?action=manageReview&id=$review[reviewID]' title='Click to manage'>Manage</a>";
   $rd .= '</li>';
  }
  $rd .= '</ul>';
