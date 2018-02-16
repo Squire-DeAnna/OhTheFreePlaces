@@ -119,11 +119,11 @@ function deleteCity($cityID) {
 }
 
 //Add Attraction to Database
-function addAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC){
+function addAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC, $photoCaption){
     // Create a connection object using the acme connection function
     $db = databaseConnect();
     // The SQL statement
-    $sql = 'INSERT INTO attraction (cityID, categoryID, stateID, attractionName, cost, hours, streetAddress, phone, website, description, imgSRC) VALUES (:cityID, :categoryID, :stateID, :attractionName, :cost, :hours, :streetAddress, :phone, :website, :description, :imgSRC)';
+    $sql = 'INSERT INTO attraction (cityID, categoryID, stateID, attractionName, cost, hours, streetAddress, phone, website, description, imgSRC, photoCaption) VALUES (:cityID, :categoryID, :stateID, :attractionName, :cost, :hours, :streetAddress, :phone, :website, :description, :imgSRC, :photoCaption)';
     // Create the prepared statement using the connection
     $stmt = $db->prepare($sql);
     // The next lines replace the placeholders in the SQL
@@ -140,6 +140,7 @@ function addAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $
     $stmt->bindValue(':website', $website, PDO::PARAM_STR);
     $stmt->bindValue(':description', $description, PDO::PARAM_STR);
     $stmt->bindValue(':imgSRC', $imgSRC, PDO::PARAM_STR);
+    $stmt->bindValue(':photoCaption', $photoCaption, PDO::PARAM_STR);
     // Insert the data
     $stmt->execute();
     // Ask how many rows changed as a result of our insert
@@ -176,9 +177,9 @@ function getAttractionInfo($attractionID){
 }
 
 //Update the Attraction
-function updateAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC, $attractionID) {
+function updateAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC, $photoCaption, $attractionID) {
     $db = databaseConnect();
-    $sql = 'UPDATE attraction SET cityID = :cityID, categoryID = :categoryID, stateID = :stateID, attractionName = :attractionName, cost = :cost, hours = :hours, streetAddress = :streetAddress, phone = :phone, website = :website, description = :description, imgSRC = :imgSRC WHERE attractionID = :attractionID';
+    $sql = 'UPDATE attraction SET cityID = :cityID, categoryID = :categoryID, stateID = :stateID, attractionName = :attractionName, cost = :cost, hours = :hours, streetAddress = :streetAddress, phone = :phone, website = :website, description = :description, imgSRC = :imgSRC, photoCaption = :photoCaption WHERE attractionID = :attractionID';
     $stmt = $db->prepare($sql);
     
     $stmt->bindValue(':cityID', $cityID, PDO::PARAM_STR);
@@ -192,6 +193,7 @@ function updateAttraction($cityID, $categoryID, $stateID, $attractionName, $cost
     $stmt->bindValue(':website', $website, PDO::PARAM_STR);
     $stmt->bindValue(':description', $description, PDO::PARAM_STR);
     $stmt->bindValue(':imgSRC', $imgSRC, PDO::PARAM_STR);
+    $stmt->bindValue(':photoCaption', $photoCaption, PDO::PARAM_STR);
     $stmt->bindValue(':attractionID', $attractionID, PDO::PARAM_STR);
     // Insert the data
     $stmt->execute();

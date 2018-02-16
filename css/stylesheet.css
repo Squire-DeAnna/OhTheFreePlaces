@@ -260,6 +260,7 @@ a:hover{
     text-align: center;
     text-decoration: none;
     font-size: 24px;
+    border: none;
 }
 
 .sign-up:hover{
@@ -401,7 +402,7 @@ a.hovertext {
     margin-top: 15px;
     
   }
-  a.hovertext::after {
+  a.hovertext:after {
     font-family: 'Open Sans', sans-serif;
     background-color: rgba(54, 70, 82, 0.8);
     font-weight: lighter;
@@ -413,7 +414,7 @@ a.hovertext {
     padding-bottom: 1px;
     left: 0;
     margin-bottom: 270px;
-    width: 197px;
+    width: 188px;
     text-decoration: none !important;
     color: white;
     opacity: 1;

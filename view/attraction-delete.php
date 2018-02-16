@@ -126,6 +126,14 @@
             }
             elseif(isset($attractionInfo['imgSRC'])) {echo "value='$attractionInfo[imgSRC]'"; }
             ?> readonly > <br>
+            <label for="photoCaption">Photo Caption/Copyright Information:</label> <br>
+            <input name="photoCaption" id="photoCaption" type="text"
+            <?php
+            if (isset($photoCaption)) {
+                echo "value='$photoCaption'";
+            }
+            elseif(isset($attractionInfo['photoCaption'])) {echo "value='$attractionInfo[photoCaption]'"; }
+            ?> readonly > <br>
             </div><br><br>
             <input class="form-button" type="submit" name="submit" value="Remove Attraction">
             <!--Add the action kew - value pair-->
@@ -133,8 +141,8 @@
             <input type="hidden" name="attractionID" value="<?php if(isset($attractionInfo['attractionID'])){ echo $attractionInfo['attractionID'];} elseif(isset($attractionID)){ echo $attractionID; } ?>">
         </form>
         <br><br>
-        <a href="../attractions/index.php">
-            <h3 class="register-button"><p><strong>Return to Attraction Management</strong></p></h3>
+        <a class="return-button" style="background-color: #822432;" href="../attractions/index.php">
+            Return to Attraction Management
         </a>
     </div>
     <br>    

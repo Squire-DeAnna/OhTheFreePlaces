@@ -114,6 +114,7 @@ switch ($action) {
         $website = filter_input(INPUT_POST, 'website', FILTER_SANITIZE_STRING);
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         $imgSRC = filter_input(INPUT_POST, 'imgSRC', FILTER_SANITIZE_STRING);
+        $photoCaption = filter_input(INPUT_POST, 'photoCaption', FILTER_SANITIZE_STRING);
         
         if(empty($attractionName) || empty($cost) || empty($hours) || empty($streetAddress)){
             $message = '<p class="notice">Please fill out all required fields marked with a star.</p>';
@@ -142,10 +143,14 @@ switch ($action) {
         if(empty($imgSRC)){
             $imgSRC = 'placeholder.jpg';
         }
+        
+        if(empty($photoCaption)){
+            $photoCaption = '&copy; 2018';
+        }
 
         
         // Send the data to the model
-        $regOutcome = addAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC);
+        $regOutcome = addAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC, $photoCaption);
         
         // Check and report the result
         if($regOutcome === 1){
@@ -212,6 +217,7 @@ switch ($action) {
         $website = filter_input(INPUT_POST, 'website', FILTER_SANITIZE_STRING);
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         $imgSRC = filter_input(INPUT_POST, 'imgSRC', FILTER_SANITIZE_STRING);
+        $photoCaption = filter_input(INPUT_POST, 'photoCaption', FILTER_SANITIZE_STRING);
         $attractionID = filter_input(INPUT_POST, 'attractionID', FILTER_SANITIZE_STRING);
         
         if(empty($attractionName) || empty($cost) || empty($hours) || empty($streetAddress)){
@@ -242,7 +248,11 @@ switch ($action) {
             $imgSRC = 'placeholder.jpg';
         }
         
-        $updateResult = updateAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC, $attractionID);
+        if(empty($photoCaption)){
+            $photoCaption = '&copy; 2018';
+        }
+        
+        $updateResult = updateAttraction($cityID, $categoryID, $stateID, $attractionName, $cost, $hours, $streetAddress, $phone, $website, $description, $imgSRC, $photoCaption, $attractionID);
         
         if($updateResult === 1){
          $message = "<p class='success'>Congratulations, $attractionName was successfully updated.</p>";

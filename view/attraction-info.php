@@ -5,6 +5,7 @@
         <div class="info-div">
             <div class="attraction-img">
                <img src='../img/<?php echo $attractionInfo['imgSRC'] ?>' alt="<?php echo $attractionInfo['attractionName']?>-img"/> 
+               <br><caption><i><?php echo $attractionInfo['photoCaption'] ?></i></caption>
             </div>
 
             <div class="attraction-info">
@@ -78,7 +79,7 @@
                     . "<label for='reviewText'>Review:</label> <br>"
                     . "<textarea rows='4' cols='50' name='reviewText' id='reviewText' "
                     . "required></textarea></div><br>"
-                    . "<input type='submit' class='form-button' name='submit' id='regbtn' value='Submit Review'>"
+                    . "<input type='submit' class='form-button' name='submit' value='Submit Review'>"
                     . "<input type='hidden' name='action' value='addReview'>"
                     . "<input type='hidden' name='userID' value='";
                     if(isset($userID)){ echo $userID;} elseif(isset($userID)){ echo $userID; }

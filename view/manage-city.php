@@ -70,8 +70,8 @@
             </div>
         </div>
         <br><br>
-        <a href="../attractions/index.php">
-            <h3 class="register-button"><p><strong>Return to Attraction Management</strong></p></h3>
+        <a class="return-button" style="background-color: #822432;" href="../attractions/index.php">
+            Return to Attraction Management
         </a>
 
     

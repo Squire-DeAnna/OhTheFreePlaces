@@ -110,14 +110,21 @@
                 echo "value='$imgSRC'";
             }
             ?> > <br>
+            <label for="photoCaption">Photo Caption/Copyright Information (Default is &copy; 2018):</label> <br>
+            <input name="photoCaption" id="photoCaption" type="text"
+            <?php
+            if (isset($photoCaption)) {
+                echo "value='$photoCaption'";
+            }
+            ?> > <br>
             </div><br><br>
             <input class="form-button" type="submit" name="submit" value="Add Attraction">
             <!--Add the action kew - value pair-->
             <input type="hidden" name="action" value="addAttraction">
         </form>
         <br><br>
-        <a href="../attractions/index.php">
-            <h3 class="register-button"><p><strong>Return to Attraction Management</strong></p></h3>
+        <a class="return-button" style="background-color: #822432;" href="../attractions/index.php">
+            Return to Attraction Management
         </a>
     </div>
     <br>

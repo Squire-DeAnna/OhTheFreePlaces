@@ -50,8 +50,6 @@
     
     <h2>Manage Your Attraction Reviews</h2>
     <?php
-    echo $_SESSION['message2'];
-    $_SESSION['message2'] = '';
             if (isset($message2)) {
               echo $message2;
               echo $_SESSION['message2'];

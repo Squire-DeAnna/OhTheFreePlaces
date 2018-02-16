@@ -21,16 +21,16 @@
 ?>
 <?php include '../common/header.php'; ?>
             <?php  echo "<h1 class='content-title'>Attractions in $cityInfo[cityName], $cityInfo[StateName]</h1>";?>
-            <div class="login-form">
+
+        <div class="login-form">
                 <div class="form-align">
                     <form action="../attraction-search/index.php" method="post">
                     <label for="categoryID">Find attractions by category:</label>
                     <?php echo $categoryList; ?>
                     </div>
-                    <input class="" type="submit" name="submit" value="Go">
-                    <!--Add the action kew - value pair-->
-                    <input type="hidden" name="action" value="attraction-list">
-                    <input type="hidden" name="id" value="<?php echo $cityInfo['cityID']?>">
+                    <input type="submit" name="submit" class="form-button" value="Go">
+                    <input type="hidden" name="action" value="attraction-category">
+                    <input type="hidden" name="cityID" value="<?php echo $cityInfo['cityID']; ?>">
                     </form> <br><br>
             </div>
             

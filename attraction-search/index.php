@@ -49,6 +49,18 @@ switch ($action) {
         include '../view/attraction-list.php';
         
         break;
+        
+    case 'attraction-category':
+        $cityID = filter_input(INPUT_POST, 'cityID', FILTER_SANITIZE_STRING);
+        $categoryID = filter_input(INPUT_POST, 'categoryID', FILTER_SANITIZE_STRING);    
+        
+       header('location: ../attraction-search/?action=attraction-list&id='
+               . $cityID
+               . '&category='
+               . $categoryID);
+        
+        break;
+        
     case 'attraction-info':
         $attractionID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         $reviews = getReviewsByAttractionId($attractionID);
