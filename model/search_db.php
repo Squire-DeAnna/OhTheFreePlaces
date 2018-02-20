@@ -51,7 +51,7 @@ function createList($attractions){
 //get Attraction by cityID and categoryID
 function getAttractionByCategory($cityID, $categoryID) {
     $db = databaseConnect();
-    $sql = 'SELECT attractionName, attractionID, imgSRC FROM attraction WHERE cityID = :cityID AND categoryID = :categoryID ORDER BY attractionName ASC';
+    $sql = 'SELECT attractionName, attractionID, cityID, imgSRC FROM attraction WHERE cityID = :cityID AND categoryID = :categoryID ORDER BY attractionName ASC';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':cityID', $cityID, PDO::PARAM_STR);
     $stmt->bindValue(':categoryID', $categoryID, PDO::PARAM_STR);

@@ -52,8 +52,10 @@
     <?php
             if (isset($message2)) {
               echo $message2;
-              echo $_SESSION['message2'];
-              $_SESSION['message2'] = '';
+              if (isset($_SESSION['message2'])) {
+                echo $_SESSION['message2'];
+                $_SESSION['message2'] = '';
+              }
             }
         ?>
     <?php if(isset($reviewDisplay)){ echo $reviewDisplay; } ?>
