@@ -70,7 +70,7 @@ switch ($action) {
         break;
     //Sign Up Page View    
     case 'sign_up_form':
-        include('../view/sign_up.php');
+        include('../view/sign-up.php');
         break;
     //Create New User Action
     case 'create_login':

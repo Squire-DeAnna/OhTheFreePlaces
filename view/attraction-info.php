@@ -2,6 +2,13 @@
 
         <h1 class='info-title'><?php echo $attractionInfo['attractionName'] ?></h1>
         
+        <?php
+            if (isset($_SESSION['list-message'])) {
+             echo $_SESSION['list-message'];
+             $_SESSION['list-message'] = '';
+            }
+        ?>
+        
         <div class="info-div">
             <div class="attraction-img">
                <img src='../img/<?php echo $attractionInfo['imgSRC'] ?>' alt="<?php echo $attractionInfo['attractionName']?>-img"/> 
@@ -42,7 +49,7 @@
         </div>
         <?php
             if (isset($_SESSION['loggedin'])){
-                echo '<a class="list-button" style = "padding: 5px;" href="#id='
+                echo '<a class="list-button" style = "padding: 5px;" href="../attraction-search/?action=addList&id='
                      .$attractionInfo['attractionID']
                      .'">'
                      .'Add To My List</a>';

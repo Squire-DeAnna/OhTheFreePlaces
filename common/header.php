@@ -29,6 +29,8 @@
                                 if (isset($_SESSION['loggedin'])){
                                     echo "<li><a href='../accounts/index.php?action=profile'>Account</a></li>";
                                     echo "<li>-</li>";
+                                    echo "<li><a href='../attraction-search/index.php?action=my-list'>My List</a></li>";
+                                    echo "<li>-</li>";
                                     echo "<li><a href='../accounts/index.php?action=logout'>Log Out</a></li>";
                                 } else {
                                     echo "<li><a href='../accounts/index.php?action=login'>Login</a></li>";
@@ -44,6 +46,7 @@
                               <?php
                                 if (isset($_SESSION['loggedin'])){
                                     echo "<a href='../accounts/index.php?action=profile'>Account</a>";
+                                    echo "<a href='../attraction-search/index.php?action=profile'>My List</a>";
                                     echo "<a href='../accounts/index.php?action=log_out'>Log Out</a>";
                                 } else {
                                     echo "<a href='../accounts/index.php?action=login'>Login</a>";

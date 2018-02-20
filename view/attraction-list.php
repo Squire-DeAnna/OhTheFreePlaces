@@ -22,6 +22,13 @@
 <?php include '../common/header.php'; ?>
             <?php  echo "<h1 class='content-title'>Attractions in $cityInfo[cityName], $cityInfo[StateName]</h1>";?>
 
+           <?php
+                if (isset($_SESSION['list-message'])) {
+                 echo $_SESSION['list-message'];
+                 $_SESSION['list-message'] = '';
+                }
+            ?>
+
         <div class="login-form">
                 <div class="form-align">
                     <form action="../attraction-search/index.php" method="post">

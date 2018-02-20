@@ -13,7 +13,7 @@ function getAttractionBasics() {
 //Get attraction info by city ID
 function getAttractionByID($cityID) {
     $db = databaseConnect();
-    $sql = 'SELECT attractionName, attractionID, imgSRC FROM attraction WHERE cityID = :cityID ORDER BY attractionName ASC';
+    $sql = 'SELECT attractionName, attractionID, cityID, imgSRC FROM attraction WHERE cityID = :cityID ORDER BY attractionName ASC';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':cityID', $cityID, PDO::PARAM_STR);
     $stmt->execute();
